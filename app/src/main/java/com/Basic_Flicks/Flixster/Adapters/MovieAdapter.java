@@ -1,6 +1,7 @@
 package com.Basic_Flicks.Flixster.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Basic_Flicks.Flixster.DetailActivity;
 import com.bumptech.glide.Glide;
 import com.Basic_Flicks.Flixster.R;
 import com.Basic_Flicks.Flixster.Models.Movie;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -85,6 +89,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                 @Override
                 public void onClick(View view) {
              Toast.makeText(context, movie.getTitle() + " " + finalTemp, Toast.LENGTH_SHORT).show();
+
+             //go to the detail window
+                    Intent i = new Intent(context, DetailActivity.class);
+
+                    i.putExtra("movie", Parcels.wrap(movie));
+
+
+
+                    context.startActivity(i);
+
                 }
 
             });
